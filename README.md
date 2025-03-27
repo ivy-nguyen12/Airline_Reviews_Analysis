@@ -6,9 +6,10 @@ This project explores which aspects of a flight experience influence a customer'
 Prepared by: Vy Nguyen, Dennis Wu, Kenjee Koh, Hsiang-Han Huang, Becky Wang
 
 Key results include:
-- Random Forest achieved 95% accuracy with full preprocessing and tuning
+- Random Forest achieved 96.5% accuracy with full preprocessing and tuning
 - "Value for Money", "Ground Service", and "Cabin Staff Service" were the top 3 drivers of customer recommendation
-- SMOTE helped resolve class imbalance and improve model performance for minority class (recommendation = yes)
+
+**Business Impact:** Our findings can guide airline strategy on service prioritization, customer experience investment, and pricing optimization.
 
 ## Dataset
 - **Source:** Kaggle (originally scraped from airlinequality.com by Juhi Bhojani)  
@@ -62,11 +63,19 @@ Key results include:
 ![Confusion Matrix](Notebooks/confusion_matrix_random_forest.png)
 
 ## Results & Key Insights
-- **Random Forest** with full preprocessing achieved the highest accuracy: **95%**
-- **Value for Money** is the strongest driver of customer recommendations across all models
-- **Ground Service** and **Cabin Staff Service** consistently ranked in the top 3 features
-- SMOTE improved performance on the minority class (recommend = Yes)
-- **Decision Trees** provided strong interpretability with slightly lower accuracy
+
+| Model                   | Accuracy | Precision | Recall | F1-Score |
+|------------------------|----------|-----------|--------|----------|
+| Baseline Decision Tree | 93.4%    | 92.8%     | 94.1%  | 93.4%    |
+| Final Decision Tree    | 95.0%    | 94.7%     | 95.2%  | 95.0%    |
+| Baseline Random Forest | 94.1%    | 93.5%     | 94.6%  | 94.0%    |
+| Final Random Forest    | **96.5%**| **96.2%** | **96.7%** | **96.5%** |
+
+- **Random Forest** with full preprocessing achieved the highest performance (96.5% accuracy)
+- **Value for Money** was the most influential factor in determining customer satisfaction. Airlines should focus on promotional pricing, bundling, and loyalty rewards to optimize perceived value.
+- **Ground Service** quality strongly affects recommendation likelihood. Improvements like smoother check-in, efficient baggage handling, and better airport support are key.
+- **Cabin Staff Service** matters more in Decision Tree models than in Random Forest. While its impact is moderate, consistency and personalized support still contribute positively.
+- **Seat Comfort** also emerged as a notable factor. Airlines may consider adding legroom, enhancing cushion quality, or offering adjustable seat features.
 
 ## Key Deliverables
 - Jupyter Notebooks:
@@ -76,10 +85,10 @@ Key results include:
 - Final Report PDF: `Reports/Airline_Reviews_Analysis_Project_Report.pdf`
 
 ## What I Learned
-- Preprocessing has a significant impact on tree model performance, especially with class imbalance
-- Label encoding is effective when there’s ordinal meaning in categorical variables
-- SMOTE can boost minority class precision without harming overall accuracy
-- Tree-based models are intuitive but benefit greatly from tuning and structured input
+- Preprocessing and class balancing have major impact on model performance
+- Label encoding works well for structured, ordinal-style categorical variables
+- SMOTE enhances performance without overfitting on minority class
+- Tree-based models are highly interpretable and improve significantly with tuning
 
 ## What I Plan to Improve
 - Apply other ensemble models like XGBoost or Gradient Boosting for comparison
